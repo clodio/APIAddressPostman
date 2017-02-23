@@ -978,60 +978,6 @@
         "description": "RU-ADDRESSIDS-0061 :  Lorsqu'aucune adresse n'est passée sur l'appel unitaire, une erreur doit être remontée, aucun traitement ne doit être réalisé"
       },
       "response": []
-    },
-    {
-      "_postman_id": "e14d63e3-3236-acf9-774e-615bf65fd88e",
-      "name": "Appel Unitaire adresse vide address dans la demande",
-      "event": [
-        {
-          "listen": "test",
-          "script": {
-            "type": "text/javascript",
-            "exec": [
-              "// Les élements ci-dessous permettent de tester le résultat de l'appel postman",
-              "",
-              "// Pour lancer en mode ligne de commande les tests",
-              "// npm install -g newman # il faut avoir au préalable node.js installé",
-              "// Exporter les tests sous APIQualifAdresse.postman_collection.json",
-              "// Un fichier d'environnement contennt la valeur de {{APIQADR}} doit être chargé (local, dev, rec, int, pprd, prod)",
-              "// Lancer les tests en ligne de commande (pour l'envronnement local)",
-              "// cd api/tests/Postman",
-              "// newman run --color -n1 -g local.postman_environment.json APIQualifAdresse.postman_collection.json",
-              "",
-              "var expected = {};",
-              "// Elements à vérifier : a adapter en fonction du service appelé",
-              "",
-              "expected.http_status_code = 400;",
-              "expected.content_type = \"application/json\";",
-              "expected.response_time_ms = 100;",
-              "// expected.bodyContainsText = \"test\"",
-              "expected.body = expected.body = {",
-              "  \"errors\": {",
-              "    \"code\": \"RU-0061\",",
-              "    \"message\": \"missing 'address' or 'address_row' query parameters\"",
-              "  }",
-              "};",
-              "",
-              "",
-              "",
-              "// Launch Tests",
-              "var globalTest = eval('('+environment.globalTest+')');",
-              "globalTest(expected);"
-            ]
-          }
-        }
-      ],
-      "request": {
-        "url": "http://{{APIQADR}}/address/v1/analyse?address_row6=&params=round,delivrable,distribution_site",
-        "method": "GET",
-        "header": [],
-        "body": {
-          "mode": "raw",
-          "raw": "{\r\n    \"partner\":\"SONDE\",\r\n    \"model\":\"GENERIC_SMS\",\r\n    \"datas\": {\r\n        \"sms\": {\r\n            \"gsm\": \"{{NUMERO_TEL}}\",\r\n            \"content\": \"Ceci est un SMS de l'équipe de notification.\"\r\n        }\r\n    },\r\n    \"tags\": [\r\n        \"test1\",\r\n        \"test2\"\r\n    ]\r\n}\r\n"
-        },
-        "description": "RU-ADDRESSIDS-0060 : Lorsqu'une adresse vide est passée sur l'appel unitaire, une erreur doit être remontée, aucun traitement ne doit être réalisé"
-      },
-      "response": []
     }
   ]
 }
