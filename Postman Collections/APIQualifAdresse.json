@@ -295,6 +295,482 @@
         "description": "RU-DISSITE-0011  : Lorsque je soumets au service unitaire une adresse valide au format address_rowX) et associée à un établissement de distribution, les données de l'établissement DOIVENT être renvoyées"
       },
       "response": []
+    },
+    {
+      "_postman_id": "2e5d2c93-763f-7b02-26ae-1761d7b31a4d",
+      "name": "Appel Unitaire distribution_site address_rowX  (adresse inconnue) KO",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              "// Les élements ci-dessous permettent de tester le résultat de l'appel postman",
+              "",
+              "// Pour lancer en mode ligne de commande les tests",
+              "// npm install -g newman # il faut avoir au préalable node.js installé",
+              "// Exporter les tests sous APIQualifAdresse.postman_collection.json",
+              "// Un fichier d'environnement contennt la valeur de {{APIQADR}} doit être chargé (local, dev, rec, int, pprd, prod)",
+              "// Lancer les tests en ligne de commande (pour l'envronnement local)",
+              "// cd api/tests/Postman",
+              "// newman run --color -n1 -g local.postman_environment.json APIQualifAdresse.postman_collection.json",
+              "",
+              "var expected = {};",
+              "// Elements à vérifier : a adapter en fonction du service appelé",
+              "",
+              "expected.http_status_code = 200;",
+              "expected.content_type = \"application/json\";",
+              "expected.response_time_ms = 10000;",
+              "// expected.bodyContainsText = \"test\"",
+              "expected.body = {\"distribution_site\":null};",
+              "",
+              "",
+              "// Launch Tests",
+              "var globalTest = eval('('+environment.globalTest+')');",
+              "globalTest(expected);"
+            ]
+          }
+        }
+      ],
+      "request": {
+        "url": "http://{{APIQADR}}/address/v1/analyse?address_row4=61 rue de inconnue&address_row6=75999 inco&params=distribution_site",
+        "method": "GET",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n    \"partner\":\"SONDE\",\r\n    \"model\":\"GENERIC_SMS\",\r\n    \"datas\": {\r\n        \"sms\": {\r\n            \"gsm\": \"{{NUMERO_TEL}}\",\r\n            \"content\": \"Ceci est un SMS de l'équipe de notification.\"\r\n        }\r\n    },\r\n    \"tags\": [\r\n        \"test1\",\r\n        \"test2\"\r\n    ]\r\n}\r\n"
+        },
+        "description": "RU-DISSITE-0020  : Lorsque je soumets au service unitaire une adresse inconnue et donc non associée à un établissement, les données d'établissement DOIVENT être renvoyées vdes"
+      },
+      "response": []
+    },
+    {
+      "_postman_id": "0c31a6ae-6e90-aaf5-4214-35d81790dd7f",
+      "name": "Appel Unitaire distribution_site address_rowX (paramètre distribution_site uniquement) OK",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              "// Les élements ci-dessous permettent de tester le résultat de l'appel postman",
+              "",
+              "// Pour lancer en mode ligne de commande les tests",
+              "// npm install -g newman # il faut avoir au préalable node.js installé",
+              "// Exporter les tests sous APIQualifAdresse.postman_collection.json",
+              "// Un fichier d'environnement contennt la valeur de {{APIQADR}} doit être chargé (local, dev, rec, int, pprd, prod)",
+              "// Lancer les tests en ligne de commande (pour l'envronnement local)",
+              "// cd api/tests/Postman",
+              "// newman run --color -n1 -g local.postman_environment.json APIQualifAdresse.postman_collection.json",
+              "",
+              "var expected = {};",
+              "// Elements à vérifier : a adapter en fonction du service appelé",
+              "",
+              "expected.http_status_code = 200;",
+              "expected.content_type = \"application/json\";",
+              "expected.response_time_ms = 10000;",
+              "// expected.bodyContainsText = \"test\"",
+              "expected.body = {\"distribution_site\":{\"id\":\"A15443\"}};",
+              "",
+              "",
+              "// Launch Tests",
+              "var globalTest = eval('('+environment.globalTest+')');",
+              "globalTest(expected);"
+            ]
+          }
+        }
+      ],
+      "request": {
+        "url": "http://{{APIQADR}}/address/v1/analyse?address_row4=61 rue de caulaincourt&address_row6=75018 paris&params=distribution_site",
+        "method": "GET",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n    \"partner\":\"SONDE\",\r\n    \"model\":\"GENERIC_SMS\",\r\n    \"datas\": {\r\n        \"sms\": {\r\n            \"gsm\": \"{{NUMERO_TEL}}\",\r\n            \"content\": \"Ceci est un SMS de l'équipe de notification.\"\r\n        }\r\n    },\r\n    \"tags\": [\r\n        \"test1\",\r\n        \"test2\"\r\n    ]\r\n}\r\n"
+        },
+        "description": "RU-DISSITE-0070  : Lorsque je saisis une adresse (sous format (address) valide dans le référentiel de distribution et j'envoie la valeur distribution_site à l'attribut params, je DOIS avoir uniquement un message indiquant des information sur l'établemment de distribution (pas de champ deliverable en sortie par exemple)"
+      },
+      "response": []
+    },
+    {
+      "_postman_id": "3f5e39a8-ce8b-f225-a6c9-b23507d396e2",
+      "name": "Appel Unitaire address_ids address_rowX (row3) OK",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              "// Les élements ci-dessous permettent de tester le résultat de l'appel postman",
+              "",
+              "// Pour lancer en mode ligne de commande les tests",
+              "// npm install -g newman # il faut avoir au préalable node.js installé",
+              "// Exporter les tests sous APIQualifAdresse.postman_collection.json",
+              "// Un fichier d'environnement contennt la valeur de {{APIQADR}} doit être chargé (local, dev, rec, int, pprd, prod)",
+              "// Lancer les tests en ligne de commande (pour l'envronnement local)",
+              "// cd api/tests/Postman",
+              "// newman run --color -n1 -g local.postman_environment.json APIQualifAdresse.postman_collection.json",
+              "",
+              "var expected = {};",
+              "// Elements à vérifier : a adapter en fonction du service appelé",
+              "",
+              "expected.http_status_code = 200;",
+              "expected.content_type = \"application/json\";",
+              "expected.response_time_ms = 10000;",
+              "// expected.bodyContainsText = \"test\"",
+              "expected.body = {",
+              "    \"address_ids\":{",
+              "        \"id\":\"4410926SCH\",",
+              "        \"row3\":\"4410926SCH\",",
+              "        \"row4_number\":\"44109262AE\",",
+              "        \"row4_road\":\"44109227GX\",",
+              "        \"row56\":\"4410926XIV\"",
+              "    }",
+              "};",
+              "",
+              "",
+              "",
+              "// Launch Tests",
+              "var globalTest = eval('('+environment.globalTest+')');",
+              "globalTest(expected);"
+            ]
+          }
+        }
+      ],
+      "request": {
+        "url": "http://{{APIQADR}}/address/v1/analyse?address_row3=IMMEUBLE ATLANTICA&address_row4= 75 Rue des francais Libres&address_row6=44200 Nantes&params=address_ids",
+        "method": "GET",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n    \"partner\":\"SONDE\",\r\n    \"model\":\"GENERIC_SMS\",\r\n    \"datas\": {\r\n        \"sms\": {\r\n            \"gsm\": \"{{NUMERO_TEL}}\",\r\n            \"content\": \"Ceci est un SMS de l'équipe de notification.\"\r\n        }\r\n    },\r\n    \"tags\": [\r\n        \"test1\",\r\n        \"test2\"\r\n    ]\r\n}\r\n"
+        },
+        "description": "RU-ADDRESSIDS-0021  : Lorsque je soumets au service unitaire une adresse valide  (au format address_rowX) de niveau ligne3 , les données d'identifiant d'adresse DOIVENT être renvoyées"
+      },
+      "response": []
+    },
+    {
+      "_postman_id": "af1a1cef-53d1-87bb-b525-13bcf747a65b",
+      "name": "Appel Unitaire address_ids address_rowX (row4_number) OK",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              "// Les élements ci-dessous permettent de tester le résultat de l'appel postman",
+              "",
+              "// Pour lancer en mode ligne de commande les tests",
+              "// npm install -g newman # il faut avoir au préalable node.js installé",
+              "// Exporter les tests sous APIQualifAdresse.postman_collection.json",
+              "// Un fichier d'environnement contennt la valeur de {{APIQADR}} doit être chargé (local, dev, rec, int, pprd, prod)",
+              "// Lancer les tests en ligne de commande (pour l'envronnement local)",
+              "// cd api/tests/Postman",
+              "// newman run --color -n1 -g local.postman_environment.json APIQualifAdresse.postman_collection.json",
+              "",
+              "var expected = {};",
+              "// Elements à vérifier : a adapter en fonction du service appelé",
+              "",
+              "expected.http_status_code = 200;",
+              "expected.content_type = \"application/json\";",
+              "expected.response_time_ms = 10000;",
+              "// expected.bodyContainsText = \"test\"",
+              "expected.body = {",
+              "    \"address_ids\":{",
+              "        \"id\":\"75118224SS\",",
+              "        \"row4_number\":\"75118224SS\",",
+              "        \"row4_road\":\"7511822262\",",
+              "        \"row56\":\"7511822U3E\"",
+              "    }",
+              "};",
+              "",
+              "",
+              "",
+              "// Launch Tests",
+              "var globalTest = eval('('+environment.globalTest+')');",
+              "globalTest(expected);"
+            ]
+          }
+        }
+      ],
+      "request": {
+        "url": "http://{{APIQADR}}/address/v1/analyse?address_row4=61 rue de caulaincourt&address_row6=75018 paris&params=address_ids",
+        "method": "GET",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n    \"partner\":\"SONDE\",\r\n    \"model\":\"GENERIC_SMS\",\r\n    \"datas\": {\r\n        \"sms\": {\r\n            \"gsm\": \"{{NUMERO_TEL}}\",\r\n            \"content\": \"Ceci est un SMS de l'équipe de notification.\"\r\n        }\r\n    },\r\n    \"tags\": [\r\n        \"test1\",\r\n        \"test2\"\r\n    ]\r\n}\r\n"
+        },
+        "description": "RU-ADDRESSIDS-0020  : Lorsque je soumets au service unitaire une adresse valide  (au format address_rowX) de niveau row4_number , les données d'identifiant d'adresse DOIVENT être renvoyées"
+      },
+      "response": []
+    },
+    {
+      "_postman_id": "3bf59731-d1c2-13f6-612e-267ad8486958",
+      "name": "Appel Unitaire address_ids address_rowX (row4_road) OK",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              "// Les élements ci-dessous permettent de tester le résultat de l'appel postman",
+              "",
+              "// Pour lancer en mode ligne de commande les tests",
+              "// npm install -g newman # il faut avoir au préalable node.js installé",
+              "// Exporter les tests sous APIQualifAdresse.postman_collection.json",
+              "// Un fichier d'environnement contennt la valeur de {{APIQADR}} doit être chargé (local, dev, rec, int, pprd, prod)",
+              "// Lancer les tests en ligne de commande (pour l'envronnement local)",
+              "// cd api/tests/Postman",
+              "// newman run --color -n1 -g local.postman_environment.json APIQualifAdresse.postman_collection.json",
+              "",
+              "var expected = {};",
+              "// Elements à vérifier : a adapter en fonction du service appelé",
+              "",
+              "expected.http_status_code = 200;",
+              "expected.content_type = \"application/json\";",
+              "expected.response_time_ms = 10000;",
+              "// expected.bodyContainsText = \"test\"",
+              "expected.body = {",
+              "    \"address_ids\":{",
+              "        \"id\":\"7511822262\",",
+              "        \"row4_road\":\"7511822262\",",
+              "        \"row56\":\"7511822U3E\"",
+              "    }",
+              "};",
+              "",
+              "",
+              "",
+              "// Launch Tests",
+              "var globalTest = eval('('+environment.globalTest+')');",
+              "globalTest(expected);"
+            ]
+          }
+        }
+      ],
+      "request": {
+        "url": "http://{{APIQADR}}/address/v1/analyse?address_row4=rue de caulaincourt&address_row6=75018 paris&params=address_ids",
+        "method": "GET",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n    \"partner\":\"SONDE\",\r\n    \"model\":\"GENERIC_SMS\",\r\n    \"datas\": {\r\n        \"sms\": {\r\n            \"gsm\": \"{{NUMERO_TEL}}\",\r\n            \"content\": \"Ceci est un SMS de l'équipe de notification.\"\r\n        }\r\n    },\r\n    \"tags\": [\r\n        \"test1\",\r\n        \"test2\"\r\n    ]\r\n}\r\n"
+        },
+        "description": "RU-ADDRESSIDS-0022  : Lorsque je soumets au service unitaire une adresse valide  (au format address_rowX) de niveau row4_road , les données d'identifiant d'adresse DOIVENT être renvoyées"
+      },
+      "response": []
+    },
+    {
+      "_postman_id": "d994c973-f558-327f-118e-d5a1675d5a52",
+      "name": "Appel Unitaire address_ids address_rowX (row56) OK",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              "// Les élements ci-dessous permettent de tester le résultat de l'appel postman",
+              "",
+              "// Pour lancer en mode ligne de commande les tests",
+              "// npm install -g newman # il faut avoir au préalable node.js installé",
+              "// Exporter les tests sous APIQualifAdresse.postman_collection.json",
+              "// Un fichier d'environnement contennt la valeur de {{APIQADR}} doit être chargé (local, dev, rec, int, pprd, prod)",
+              "// Lancer les tests en ligne de commande (pour l'envronnement local)",
+              "// cd api/tests/Postman",
+              "// newman run --color -n1 -g local.postman_environment.json APIQualifAdresse.postman_collection.json",
+              "",
+              "var expected = {};",
+              "// Elements à vérifier : a adapter en fonction du service appelé",
+              "",
+              "expected.http_status_code = 200;",
+              "expected.content_type = \"application/json\";",
+              "expected.response_time_ms = 10000;",
+              "// expected.bodyContainsText = \"test\"",
+              "expected.body = {",
+              "    \"address_ids\":{",
+              "        \"id\":\"7511822U3E\",",
+              "        \"row56\":\"7511822U3E\"",
+              "    }",
+              "};",
+              "",
+              "",
+              "",
+              "// Launch Tests",
+              "var globalTest = eval('('+environment.globalTest+')');",
+              "globalTest(expected);"
+            ]
+          }
+        }
+      ],
+      "request": {
+        "url": "http://{{APIQADR}}/address/v1/analyse?address_row6= 75018 paris&params=address_ids",
+        "method": "GET",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n    \"partner\":\"SONDE\",\r\n    \"model\":\"GENERIC_SMS\",\r\n    \"datas\": {\r\n        \"sms\": {\r\n            \"gsm\": \"{{NUMERO_TEL}}\",\r\n            \"content\": \"Ceci est un SMS de l'équipe de notification.\"\r\n        }\r\n    },\r\n    \"tags\": [\r\n        \"test1\",\r\n        \"test2\"\r\n    ]\r\n}\r\n"
+        },
+        "description": "RU-ADDRESSIDS-0023  : Lorsque je soumets au service unitaire une adresse valide (au format address_rowX) de niveau row56, les données d'identifiant d'adresse DOIVENT être renvoyées"
+      },
+      "response": []
+    },
+    {
+      "_postman_id": "abc4492a-1fad-7492-cd9b-3014e1077412",
+      "name": "Appel Unitaire address_ids address_rowX (inconnue) OK",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              "// Les élements ci-dessous permettent de tester le résultat de l'appel postman",
+              "",
+              "// Pour lancer en mode ligne de commande les tests",
+              "// npm install -g newman # il faut avoir au préalable node.js installé",
+              "// Exporter les tests sous APIQualifAdresse.postman_collection.json",
+              "// Un fichier d'environnement contennt la valeur de {{APIQADR}} doit être chargé (local, dev, rec, int, pprd, prod)",
+              "// Lancer les tests en ligne de commande (pour l'envronnement local)",
+              "// cd api/tests/Postman",
+              "// newman run --color -n1 -g local.postman_environment.json APIQualifAdresse.postman_collection.json",
+              "",
+              "var expected = {};",
+              "// Elements à vérifier : a adapter en fonction du service appelé",
+              "",
+              "expected.http_status_code = 200;",
+              "expected.content_type = \"application/json\";",
+              "expected.response_time_ms = 10000;",
+              "// expected.bodyContainsText = \"test\"",
+              "expected.body = { \"address_ids\": null };",
+              "",
+              "",
+              "",
+              "// Launch Tests",
+              "var globalTest = eval('('+environment.globalTest+')');",
+              "globalTest(expected);"
+            ]
+          }
+        }
+      ],
+      "request": {
+        "url": "http://{{APIQADR}}/address/v1/analyse?address_row6= 69000 inconnu&params=address_ids",
+        "method": "GET",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n    \"partner\":\"SONDE\",\r\n    \"model\":\"GENERIC_SMS\",\r\n    \"datas\": {\r\n        \"sms\": {\r\n            \"gsm\": \"{{NUMERO_TEL}}\",\r\n            \"content\": \"Ceci est un SMS de l'équipe de notification.\"\r\n        }\r\n    },\r\n    \"tags\": [\r\n        \"test1\",\r\n        \"test2\"\r\n    ]\r\n}\r\n"
+        },
+        "description": "RU-ADDRESSIDS-0024  : Lorsque je soumets au service unitaire une adresse inconnue , les données d'identifiant d'adresse DOIVENT être vides"
+      },
+      "response": []
+    },
+    {
+      "_postman_id": "d1e79406-2d3c-b6bb-7e10-47d08a1dc4fa",
+      "name": "Appel Unitaire address_ids address_rowX (parametre address_ids uniquement) OK",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              "// Les élements ci-dessous permettent de tester le résultat de l'appel postman",
+              "",
+              "// Pour lancer en mode ligne de commande les tests",
+              "// npm install -g newman # il faut avoir au préalable node.js installé",
+              "// Exporter les tests sous APIQualifAdresse.postman_collection.json",
+              "// Un fichier d'environnement contennt la valeur de {{APIQADR}} doit être chargé (local, dev, rec, int, pprd, prod)",
+              "// Lancer les tests en ligne de commande (pour l'envronnement local)",
+              "// cd api/tests/Postman",
+              "// newman run --color -n1 -g local.postman_environment.json APIQualifAdresse.postman_collection.json",
+              "",
+              "var expected = {};",
+              "// Elements à vérifier : a adapter en fonction du service appelé",
+              "",
+              "expected.http_status_code = 200;",
+              "expected.content_type = \"application/json\";",
+              "expected.response_time_ms = 10000;",
+              "// expected.bodyContainsText = \"test\"",
+              "expected.body = expected.body = {",
+              "    \"address_ids\":{",
+              "        \"id\":\"7511822U3E\",",
+              "        \"row56\":\"7511822U3E\"",
+              "    }",
+              "};",
+              "",
+              "",
+              "",
+              "// Launch Tests",
+              "var globalTest = eval('('+environment.globalTest+')');",
+              "globalTest(expected);"
+            ]
+          }
+        }
+      ],
+      "request": {
+        "url": "http://{{APIQADR}}/address/v1/analyse?address_row6=75018 paris&params=address_ids",
+        "method": "GET",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n    \"partner\":\"SONDE\",\r\n    \"model\":\"GENERIC_SMS\",\r\n    \"datas\": {\r\n        \"sms\": {\r\n            \"gsm\": \"{{NUMERO_TEL}}\",\r\n            \"content\": \"Ceci est un SMS de l'équipe de notification.\"\r\n        }\r\n    },\r\n    \"tags\": [\r\n        \"test1\",\r\n        \"test2\"\r\n    ]\r\n}\r\n"
+        },
+        "description": "RU-ADDRESSIDS-0070  : Lorsque je saisis une adresse (sous format (address) valide dans le référentiel de distribution et j'envoie la valeur address_ids à l'attribut params, je DOIS avoir uniquement un message indiquant la tournée (pas de champ deliverable par exemple)"
+      },
+      "response": []
+    },
+    {
+      "_postman_id": "12d2b0b2-eadd-7cf3-6445-1ed22116b67f",
+      "name": "Appel Unitaire address_ids address_rowX (parametre address_ids,deliverable) OK",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              "// Les élements ci-dessous permettent de tester le résultat de l'appel postman",
+              "",
+              "// Pour lancer en mode ligne de commande les tests",
+              "// npm install -g newman # il faut avoir au préalable node.js installé",
+              "// Exporter les tests sous APIQualifAdresse.postman_collection.json",
+              "// Un fichier d'environnement contennt la valeur de {{APIQADR}} doit être chargé (local, dev, rec, int, pprd, prod)",
+              "// Lancer les tests en ligne de commande (pour l'envronnement local)",
+              "// cd api/tests/Postman",
+              "// newman run --color -n1 -g local.postman_environment.json APIQualifAdresse.postman_collection.json",
+              "",
+              "var expected = {};",
+              "// Elements à vérifier : a adapter en fonction du service appelé",
+              "",
+              "expected.http_status_code = 200;",
+              "expected.content_type = \"application/json\";",
+              "expected.response_time_ms = 10000;",
+              "// expected.bodyContainsText = \"test\"",
+              "expected.body = expected.body = {",
+              "    \"deliverable\" : true,",
+              "    \"address_ids\":{",
+              "        \"id\":\"7511822U3E\",",
+              "        \"row56\":\"7511822U3E\"",
+              "    }",
+              "};",
+              "",
+              "",
+              "",
+              "// Launch Tests",
+              "var globalTest = eval('('+environment.globalTest+')');",
+              "globalTest(expected);"
+            ]
+          }
+        }
+      ],
+      "request": {
+        "url": "http://{{APIQADR}}/address/v1/analyse?address_row6=75018 paris&params=address_ids,deliverable",
+        "method": "GET",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n    \"partner\":\"SONDE\",\r\n    \"model\":\"GENERIC_SMS\",\r\n    \"datas\": {\r\n        \"sms\": {\r\n            \"gsm\": \"{{NUMERO_TEL}}\",\r\n            \"content\": \"Ceci est un SMS de l'équipe de notification.\"\r\n        }\r\n    },\r\n    \"tags\": [\r\n        \"test1\",\r\n        \"test2\"\r\n    ]\r\n}\r\n"
+        },
+        "description": "RU-ADDRESSIDS-0080  : Lorsque je saisis une adresse (sous format (address) valide dans le référentiel de distribution et j'envoie la valeur address_ids,deliverable à l'attribut params, je DOIS avoir un message contenant deliverable et address_ids"
+      },
+      "response": []
     }
   ]
 }
