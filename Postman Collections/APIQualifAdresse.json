@@ -161,50 +161,6 @@
         "description": "RU-PREST-0010  : Lorsque je saisis une adresse une adresse inconnue ou non valide, je DOIS avoir un retour indiquant que l'adresse n'est pas prestable"
       },
       "response": []
-    },
-    {
-      "_postman_id": "fc1e528f-e494-4e2d-0c38-b7281127c977",
-      "name": "Appel Unitaire delivrable address_rowX KO copy",
-      "event": [
-        {
-          "listen": "test",
-          "script": {
-            "type": "text/javascript",
-            "exec": [
-              "// npm install -g newman # il faut avoir node.js installé",
-              "// Exporter les tests sous APIQualifAdresse.postman_collection.json",
-              "// local.postman_environment.json doit contenir les variables d'environnements {{APIQADR}}",
-              "// newman run --color -n1 -g local.postman_environment.json APIQualifAdresse.postman_collection.json",
-              "",
-              "var expected = {};",
-              "",
-              "expected.http_status_code = 500;",
-              "expected.content_type = \"application/json\";",
-              "expected.response_time_ms = 10000;",
-              "expected.body = {",
-              "  \"errors\": {",
-              "    \"code\": \"RU-PREST-0042\",",
-              "    \"message\": \"cURL error 6: Could not resolve host: national.cpn.rec.sie.courrier.intra.laposte.fr (see http://curl.haxx.se/libcurl/c/libcurl-errors.html)\"",
-              "  }",
-              "};",
-              "",
-              "var globalTest = eval('('+environment.globalTest+')');",
-              "globalTest(expected);"
-            ]
-          }
-        }
-      ],
-      "request": {
-        "url": "http://{{APIQADR}}/address/v1/analyse?address_row4=61 rue de caulaincourt&address_row6=75010 paris&params=distribution_site",
-        "method": "GET",
-        "header": [],
-        "body": {
-          "mode": "raw",
-          "raw": "{\r\n    \"partner\":\"SONDE\",\r\n    \"model\":\"GENERIC_SMS\",\r\n    \"datas\": {\r\n        \"sms\": {\r\n            \"gsm\": \"{{NUMERO_TEL}}\",\r\n            \"content\": \"Ceci est un SMS de l'équipe de notification.\"\r\n        }\r\n    },\r\n    \"tags\": [\r\n        \"test1\",\r\n        \"test2\"\r\n    ]\r\n}\r\n"
-        },
-        "description": "RU-PREST-0010  : Lorsque je saisis une adresse une adresse inconnue ou non valide, je DOIS avoir un retour indiquant que l'adresse n'est pas prestable"
-      },
-      "response": []
     }
   ]
 }
