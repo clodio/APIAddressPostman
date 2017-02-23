@@ -120,7 +120,7 @@
     },
     {
       "_postman_id": "f9ce8ae7-e2b1-1d41-5817-bab147e60269",
-      "name": "RU-PREST-0010  : Lorsque je saisis une adresse une adresse inconnue ou non valide, je DOIS avoir un retour indiquant que l'adresse n'est pas prestable",
+      "name": "Appel Unitaire delivrable address_rowX KO",
       "event": [
         {
           "listen": "test",
