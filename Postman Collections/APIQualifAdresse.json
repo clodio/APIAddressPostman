@@ -448,6 +448,117 @@
         "description": "RU-ADDRESSIDS-0021  : Lorsque je soumets au service unitaire une adresse valide  (au format address_rowX) de niveau ligne3 , les données d'identifiant d'adresse DOIVENT être renvoyées"
       },
       "response": []
+    },
+    {
+      "_postman_id": "af1a1cef-53d1-87bb-b525-13bcf747a65b",
+      "name": "Appel Unitaire address_ids address_rowX (row4_number) OK",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              "// Les élements ci-dessous permettent de tester le résultat de l'appel postman",
+              "",
+              "// Pour lancer en mode ligne de commande les tests",
+              "// npm install -g newman # il faut avoir au préalable node.js installé",
+              "// Exporter les tests sous APIQualifAdresse.postman_collection.json",
+              "// Un fichier d'environnement contennt la valeur de {{APIQADR}} doit être chargé (local, dev, rec, int, pprd, prod)",
+              "// Lancer les tests en ligne de commande (pour l'envronnement local)",
+              "// cd api/tests/Postman",
+              "// newman run --color -n1 -g local.postman_environment.json APIQualifAdresse.postman_collection.json",
+              "",
+              "var expected = {};",
+              "// Elements à vérifier : a adapter en fonction du service appelé",
+              "",
+              "expected.http_status_code = 200;",
+              "expected.content_type = \"application/json\";",
+              "expected.response_time_ms = 10000;",
+              "// expected.bodyContainsText = \"test\"",
+              "expected.body = {",
+              "    \"address_ids\":{",
+              "        \"id\":\"75118224SS\",",
+              "        \"row4_number\":\"75118224SS\",",
+              "        \"row4_road\":\"7511822262\",",
+              "        \"row56\":\"7511822U3E\"",
+              "    }",
+              "};",
+              "",
+              "",
+              "",
+              "// Launch Tests",
+              "var globalTest = eval('('+environment.globalTest+')');",
+              "globalTest(expected);"
+            ]
+          }
+        }
+      ],
+      "request": {
+        "url": "http://{{APIQADR}}/address/v1/analyse?address_row4=61 rue de caulaincourt&address_row6=75018 paris&params=address_ids",
+        "method": "GET",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n    \"partner\":\"SONDE\",\r\n    \"model\":\"GENERIC_SMS\",\r\n    \"datas\": {\r\n        \"sms\": {\r\n            \"gsm\": \"{{NUMERO_TEL}}\",\r\n            \"content\": \"Ceci est un SMS de l'équipe de notification.\"\r\n        }\r\n    },\r\n    \"tags\": [\r\n        \"test1\",\r\n        \"test2\"\r\n    ]\r\n}\r\n"
+        },
+        "description": "RU-ADDRESSIDS-0020  : Lorsque je soumets au service unitaire une adresse valide  (au format address_rowX) de niveau row4_number , les données d'identifiant d'adresse DOIVENT être renvoyées"
+      },
+      "response": []
+    },
+    {
+      "_postman_id": "3bf59731-d1c2-13f6-612e-267ad8486958",
+      "name": "Appel Unitaire address_ids address_rowX (row4_road) OK",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              "// Les élements ci-dessous permettent de tester le résultat de l'appel postman",
+              "",
+              "// Pour lancer en mode ligne de commande les tests",
+              "// npm install -g newman # il faut avoir au préalable node.js installé",
+              "// Exporter les tests sous APIQualifAdresse.postman_collection.json",
+              "// Un fichier d'environnement contennt la valeur de {{APIQADR}} doit être chargé (local, dev, rec, int, pprd, prod)",
+              "// Lancer les tests en ligne de commande (pour l'envronnement local)",
+              "// cd api/tests/Postman",
+              "// newman run --color -n1 -g local.postman_environment.json APIQualifAdresse.postman_collection.json",
+              "",
+              "var expected = {};",
+              "// Elements à vérifier : a adapter en fonction du service appelé",
+              "",
+              "expected.http_status_code = 200;",
+              "expected.content_type = \"application/json\";",
+              "expected.response_time_ms = 10000;",
+              "// expected.bodyContainsText = \"test\"",
+              "expected.body = {",
+              "    \"address_ids\":{",
+              "        \"id\":\"7511822262\",",
+              "        \"row4_road\":\"7511822262\",",
+              "        \"row56\":\"7511822U3E\"",
+              "    }",
+              "};",
+              "",
+              "",
+              "",
+              "// Launch Tests",
+              "var globalTest = eval('('+environment.globalTest+')');",
+              "globalTest(expected);"
+            ]
+          }
+        }
+      ],
+      "request": {
+        "url": "http://{{APIQADR}}/address/v1/analyse?address_row4=rue de caulaincourt&address_row6=75018 paris&params=address_ids",
+        "method": "GET",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n    \"partner\":\"SONDE\",\r\n    \"model\":\"GENERIC_SMS\",\r\n    \"datas\": {\r\n        \"sms\": {\r\n            \"gsm\": \"{{NUMERO_TEL}}\",\r\n            \"content\": \"Ceci est un SMS de l'équipe de notification.\"\r\n        }\r\n    },\r\n    \"tags\": [\r\n        \"test1\",\r\n        \"test2\"\r\n    ]\r\n}\r\n"
+        },
+        "description": "RU-ADDRESSIDS-0022  : Lorsque je soumets au service unitaire une adresse valide  (au format address_rowX) de niveau row4_road , les données d'identifiant d'adresse DOIVENT être renvoyées"
+      },
+      "response": []
     }
   ]
 }
