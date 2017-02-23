@@ -158,7 +158,7 @@
           "mode": "raw",
           "raw": "{\r\n    \"partner\":\"SONDE\",\r\n    \"model\":\"GENERIC_SMS\",\r\n    \"datas\": {\r\n        \"sms\": {\r\n            \"gsm\": \"{{NUMERO_TEL}}\",\r\n            \"content\": \"Ceci est un SMS de l'équipe de notification.\"\r\n        }\r\n    },\r\n    \"tags\": [\r\n        \"test1\",\r\n        \"test2\"\r\n    ]\r\n}\r\n"
         },
-        "description": ""
+        "description": "RU-PREST-0010  : Lorsque je saisis une adresse une adresse inconnue ou non valide, je DOIS avoir un retour indiquant que l'adresse n'est pas prestable"
       },
       "response": []
     }
