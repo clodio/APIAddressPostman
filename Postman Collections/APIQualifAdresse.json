@@ -117,48 +117,6 @@
         "description": ""
       },
       "response": []
-    },
-    {
-      "_postman_id": "f9ce8ae7-e2b1-1d41-5817-bab147e60269",
-      "name": "Appel Unitaire deliverable address_rowX KO",
-      "event": [
-        {
-          "listen": "test",
-          "script": {
-            "type": "text/javascript",
-            "exec": [
-              "// npm install -g newman # il faut avoir node.js installé",
-              "// Exporter les tests sous APIQualifAdresse.postman_collection.json",
-              "// local.postman_environment.json doit contenir les variables d'environnements {{APIQADR}}",
-              "// newman run --color -n1 -g local.postman_environment.json APIQualifAdresse.postman_collection.json",
-              "",
-              "var expected = {};",
-              "",
-              "expected.http_status_code = 200;",
-              "expected.content_type = \"application/json\";",
-              "expected.response_time_ms = 10000;",
-              "// expected.bodyContainsText = \"test\"",
-              "expected.body = { \"deliverable\" : false };",
-              "",
-              "",
-              "// Launch Tests",
-              "var globalTest = eval('('+environment.globalTest+')');",
-              "globalTest(expected);"
-            ]
-          }
-        }
-      ],
-      "request": {
-        "url": "http://{{APIQADR}}/address/v1/analyse?address_row4=61 rue de incnnue&address_row6=999 inconnu",
-        "method": "GET",
-        "header": [],
-        "body": {
-          "mode": "raw",
-          "raw": "{\r\n    \"partner\":\"SONDE\",\r\n    \"model\":\"GENERIC_SMS\",\r\n    \"datas\": {\r\n        \"sms\": {\r\n            \"gsm\": \"{{NUMERO_TEL}}\",\r\n            \"content\": \"Ceci est un SMS de l'équipe de notification.\"\r\n        }\r\n    },\r\n    \"tags\": [\r\n        \"test1\",\r\n        \"test2\"\r\n    ]\r\n}\r\n"
-        },
-        "description": "RU-PREST-0010  : Lorsque je saisis une adresse une adresse inconnue ou non valide, je DOIS avoir un retour indiquant que l'adresse n'est pas prestable"
-      },
-      "response": []
     }
   ]
 }
