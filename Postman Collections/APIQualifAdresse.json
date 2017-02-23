@@ -134,16 +134,14 @@
               "",
               "var expected = {};",
               "",
-              "expected.http_status_code = 500;",
+              "expected.http_status_code = 200;",
               "expected.content_type = \"application/json\";",
               "expected.response_time_ms = 10000;",
-              "expected.body = {",
-              "  \"errors\": {",
-              "    \"code\": \"RU-PREST-0042\",",
-              "    \"message\": \"cURL error 6: Could not resolve host: national.cpn.rec.sie.courrier.intra.laposte.fr (see http://curl.haxx.se/libcurl/c/libcurl-errors.html)\"",
-              "  }",
-              "};",
+              "// expected.bodyContainsText = \"test\"",
+              "expected.body = { \"deliverable\" : false };",
               "",
+              "",
+              "// Launch Tests",
               "var globalTest = eval('('+environment.globalTest+')');",
               "globalTest(expected);"
             ]
@@ -151,7 +149,7 @@
         }
       ],
       "request": {
-        "url": "http://{{APIQADR}}/address/v1/analyse?address_row4=61 rue de caulaincourt&address_row6=75010 paris&params=distribution_site",
+        "url": "http://{{APIQADR}}/address/v1/analyse?address_row4=61 rue de incnnue&address_row6=999 inconnu",
         "method": "GET",
         "header": [],
         "body": {
