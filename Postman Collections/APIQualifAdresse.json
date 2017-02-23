@@ -107,7 +107,7 @@
         }
       ],
       "request": {
-        "url": "http://{{APIQADR}}/address/v1/analyse?address_row4=61 rue de caulaincourt&address_row6=75010 paris&params=distribution_site",
+        "url": "http://{{APIQADR}}",
         "method": "GET",
         "header": [],
         "body": {
