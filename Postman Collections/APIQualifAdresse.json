@@ -744,7 +744,7 @@
               "expected.response_time_ms = 10000;",
               "// expected.bodyContainsText = \"test\"",
               "expected.body = expected.body = {",
-              "    \"deliverable\" : true,",
+              "    \"deliverable\" : false,",
               "    \"address_ids\":{",
               "        \"id\":\"7511822U3E\",",
               "        \"row56\":\"7511822U3E\"",
