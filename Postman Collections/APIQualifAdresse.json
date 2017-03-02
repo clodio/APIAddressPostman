@@ -1294,6 +1294,160 @@
         "description": "RU-ROUND-0070  : Lorsque je saisis une adresse (sous format (address_row) valide dans le référentiel de distribution et j'envoie la valeur round à l'attribut params, je DOIS avoir uniquement un message indiquant la tournée (pas de champ deliverable par exemple)"
       },
       "response": []
+    },
+    {
+      "_postman_id": "6da5f54b-5d96-e8b1-38fe-459173324036",
+      "name": "Appel Unitaire round address vide",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              "// Les élements ci-dessous permettent de tester le résultat de l'appel postman",
+              "",
+              "// Pour lancer en mode ligne de commande les tests",
+              "// npm install -g newman # il faut avoir au préalable node.js installé",
+              "// Exporter les tests sous APIQualifAdresse.postman_collection.json",
+              "// Un fichier d'environnement contennt la valeur de {{APIQADR}} doit être chargé (local, dev, rec, int, pprd, prod)",
+              "// Lancer les tests en ligne de commande (pour l'envronnement local)",
+              "// cd api/tests/Postman",
+              "// newman run --color -n1 -g local.postman_environment.json APIQualifAdresse.postman_collection.json",
+              "",
+              "var expected = {};",
+              "// Elements à vérifier : a adapter en fonction du service appelé",
+              "",
+              "expected.http_status_code = 400;",
+              "expected.content_type = \"application/json\";",
+              "expected.response_time_ms = 10000;",
+              "// expected.bodyContainsText = \"test\"",
+              "expected.body = {",
+              "  \"errors\": {",
+              "    \"code\": \"RU-060\",",
+              "    \"message\": \"empty 'address' query value\"",
+              "  }",
+              "};",
+              "",
+              "",
+              "// Launch Tests",
+              "var globalTest = eval('('+environment.globalTest+')');",
+              "globalTest(expected);"
+            ]
+          }
+        }
+      ],
+      "request": {
+        "url": "http://{{APIQADR}}/address/v1/analyse?address=&params=round",
+        "method": "GET",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n    \"partner\":\"SONDE\",\r\n    \"model\":\"GENERIC_SMS\",\r\n    \"datas\": {\r\n        \"sms\": {\r\n            \"gsm\": \"{{NUMERO_TEL}}\",\r\n            \"content\": \"Ceci est un SMS de l'équipe de notification.\"\r\n        }\r\n    },\r\n    \"tags\": [\r\n        \"test1\",\r\n        \"test2\"\r\n    ]\r\n}\r\n"
+        },
+        "description": "RU-ROUND-0060 :  Lorsqu'une adresse vide est passée sur l'appel unitaire, une erreur doit être remontée, aucun traitement ne doit être réalisé"
+      },
+      "response": []
+    },
+    {
+      "_postman_id": "f72486c7-5af7-eb02-a3df-057d59e43e18",
+      "name": "Appel Unitaire round pas d'address",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              "// Les élements ci-dessous permettent de tester le résultat de l'appel postman",
+              "",
+              "// Pour lancer en mode ligne de commande les tests",
+              "// npm install -g newman # il faut avoir au préalable node.js installé",
+              "// Exporter les tests sous APIQualifAdresse.postman_collection.json",
+              "// Un fichier d'environnement contennt la valeur de {{APIQADR}} doit être chargé (local, dev, rec, int, pprd, prod)",
+              "// Lancer les tests en ligne de commande (pour l'envronnement local)",
+              "// cd api/tests/Postman",
+              "// newman run --color -n1 -g local.postman_environment.json APIQualifAdresse.postman_collection.json",
+              "",
+              "var expected = {};",
+              "// Elements à vérifier : a adapter en fonction du service appelé",
+              "",
+              "expected.http_status_code = 400;",
+              "expected.content_type = \"application/json\";",
+              "expected.response_time_ms = 10000;",
+              "// expected.bodyContainsText = \"test\"",
+              "expected.body = {",
+              " \"errors\": {",
+              " \"code\": \"RU-061\",",
+              " \"message\": \"missing 'address' or 'address_row' query parameters\"",
+              " }",
+              "};",
+              "",
+              "",
+              "// Launch Tests",
+              "var globalTest = eval('('+environment.globalTest+')');",
+              "globalTest(expected);"
+            ]
+          }
+        }
+      ],
+      "request": {
+        "url": "http://{{APIQADR}}/address/v1/analyse?params=round",
+        "method": "GET",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n    \"partner\":\"SONDE\",\r\n    \"model\":\"GENERIC_SMS\",\r\n    \"datas\": {\r\n        \"sms\": {\r\n            \"gsm\": \"{{NUMERO_TEL}}\",\r\n            \"content\": \"Ceci est un SMS de l'équipe de notification.\"\r\n        }\r\n    },\r\n    \"tags\": [\r\n        \"test1\",\r\n        \"test2\"\r\n    ]\r\n}\r\n"
+        },
+        "description": "RU-ROUND-0061 : Lorsqu'aucune adresse n'est passée sur l'appel unitaire, une erreur doit être remontée, aucun traitement ne doit être réalisé"
+      },
+      "response": []
+    },
+    {
+      "_postman_id": "fdd5e1cc-2609-9746-240f-6d9b3fcfbddb",
+      "name": "Appel Unitaire deliverable address OK",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              "// Les élements ci-dessous permettent de tester le résultat de l'appel postman",
+              "",
+              "// Pour lancer en mode ligne de commande les tests",
+              "// npm install -g newman # il faut avoir au préalable node.js installé",
+              "// Exporter les tests sous APIQualifAdresse.postman_collection.json",
+              "// Un fichier d'environnement contennt la valeur de {{APIQADR}} doit être chargé (local, dev, rec, int, pprd, prod)",
+              "// Lancer les tests en ligne de commande (pour l'envronnement local)",
+              "// cd api/tests/Postman",
+              "// newman run --color -n1 -g local.postman_environment.json APIQualifAdresse.postman_collection.json",
+              "",
+              "var expected = {};",
+              "// Elements à vérifier : a adapter en fonction du service appelé",
+              "",
+              "expected.http_status_code = 200;",
+              "expected.content_type = \"application/json\";",
+              "expected.response_time_ms = 10000;",
+              "// expected.bodyContainsText = \"test\"",
+              "expected.body = { \"deliverable\" : true };",
+              "",
+              "",
+              "// Launch Tests",
+              "var globalTest = eval('('+environment.globalTest+')');",
+              "globalTest(expected);"
+            ]
+          }
+        }
+      ],
+      "request": {
+        "url": "http://{{APIQADR}}/address/v1/analyse?address=61 rue de caulaincourt%0A75018 paris&params",
+        "method": "GET",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n    \"partner\":\"SONDE\",\r\n    \"model\":\"GENERIC_SMS\",\r\n    \"datas\": {\r\n        \"sms\": {\r\n            \"gsm\": \"{{NUMERO_TEL}}\",\r\n            \"content\": \"Ceci est un SMS de l'équipe de notification.\"\r\n        }\r\n    },\r\n    \"tags\": [\r\n        \"test1\",\r\n        \"test2\"\r\n    ]\r\n}\r\n"
+        },
+        "description": "RU-PREST-0020 : Lorsque je saisis une adresse (sous format (address) valide dans le référentiel de distribution, je DOIS avoir un message indiquant que l'adresse est prestable"
+      },
+      "response": []
     }
   ]
 }
