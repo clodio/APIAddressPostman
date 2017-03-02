@@ -1034,54 +1034,6 @@
       "response": []
     },
     {
-      "_postman_id": "148c6fc9-01c0-0431-b4c2-cd051c352c84",
-      "name": "Appel Unitaire deliverable address_rowX OK copy",
-      "event": [
-        {
-          "listen": "test",
-          "script": {
-            "type": "text/javascript",
-            "exec": [
-              "// Les élements ci-dessous permettent de tester le résultat de l'appel postman",
-              "",
-              "// Pour lancer en mode ligne de commande les tests",
-              "// npm install -g newman # il faut avoir au préalable node.js installé",
-              "// Exporter les tests sous APIQualifAdresse.postman_collection.json",
-              "// Un fichier d'environnement contennt la valeur de {{APIQADR}} doit être chargé (local, dev, rec, int, pprd, prod)",
-              "// Lancer les tests en ligne de commande (pour l'envronnement local)",
-              "// cd api/tests/Postman",
-              "// newman run --color -n1 -g local.postman_environment.json APIQualifAdresse.postman_collection.json",
-              "",
-              "var expected = {};",
-              "// Elements à vérifier : a adapter en fonction du service appelé",
-              "",
-              "expected.http_status_code = 200;",
-              "expected.content_type = \"application/json\";",
-              "expected.response_time_ms = 10000;",
-              "// expected.bodyContainsText = \"test\"",
-              "expected.body = { \"deliverable\" : true };",
-              "",
-              "",
-              "// Launch Tests",
-              "var globalTest = eval('('+environment.globalTest+')');",
-              "globalTest(expected);"
-            ]
-          }
-        }
-      ],
-      "request": {
-        "url": "http://{{APIQADR}}/address/v1/analyse?address_row1=Mr toto valide&address_row4=61 rue de caulaincourt&address_row6=75018 paris",
-        "method": "GET",
-        "header": [],
-        "body": {
-          "mode": "raw",
-          "raw": "{\r\n    \"partner\":\"SONDE\",\r\n    \"model\":\"GENERIC_SMS\",\r\n    \"datas\": {\r\n        \"sms\": {\r\n            \"gsm\": \"{{NUMERO_TEL}}\",\r\n            \"content\": \"Ceci est un SMS de l'équipe de notification.\"\r\n        }\r\n    },\r\n    \"tags\": [\r\n        \"test1\",\r\n        \"test2\"\r\n    ]\r\n}\r\n"
-        },
-        "description": "RU-PREST-0021  : Lorsque je saisis une adresse (sous format address_row*) valide dans le référentiel de distribution, je DOIS avoir un message indiquant que l'adresse est prestable"
-      },
-      "response": []
-    },
-    {
       "_postman_id": "b4ef0efa-40fa-001e-06c0-40c83ae6fddc",
       "name": "Appel Unitaire deliverable address_rowX KO copy",
       "event": [
