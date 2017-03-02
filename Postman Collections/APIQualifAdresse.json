@@ -189,7 +189,7 @@
         }
       ],
       "request": {
-        "url": "http://{{APIQADR}}/address/v1/analyse?address_row1=Mr toto valide&address_row4=61 rue de caulaincourt&address_row6=75018 paris",
+        "url": "http://{{APIQADR}}/address/v1/analyse?address_row4=61 rue de caulaincourt&address_row6=75018 paris&params",
         "method": "GET",
         "header": [],
         "body": {
@@ -949,11 +949,11 @@
               "",
               "expected.http_status_code = 400;",
               "expected.content_type = \"application/json\";",
-              "expected.response_time_ms = 100;",
+              "expected.response_time_ms = 1000;",
               "// expected.bodyContainsText = \"test\"",
               "expected.body = expected.body = {",
               "  \"errors\": {",
-              "    \"code\": \"RU-0061\",",
+              "    \"code\": \"RU-061\",",
               "    \"message\": \"missing 'address' or 'address_row' query parameters\"",
               "  }",
               "};",
