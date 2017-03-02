@@ -796,12 +796,12 @@
               "",
               "expected.http_status_code = 400;",
               "expected.content_type = \"application/json\";",
-              "expected.response_time_ms = 5000;",
+              "expected.response_time_ms = 100;",
               "// expected.bodyContainsText = \"test\"",
               "expected.body = expected.body = {",
               "  \"errors\": {",
-              "    \"code\": \"RU-060\",",
-              "    \"message\": \"empty 'address' query value\"",
+              "    \"code\": \"RU-0061\",",
+              "    \"message\": \"missing 'address' or 'address_row' query parameters\"",
               "  }",
               "};",
               "",
@@ -1030,61 +1030,6 @@
           "raw": "{\r\n    \"partner\":\"SONDE\",\r\n    \"model\":\"GENERIC_SMS\",\r\n    \"datas\": {\r\n        \"sms\": {\r\n            \"gsm\": \"{{NUMERO_TEL}}\",\r\n            \"content\": \"Ceci est un SMS de l'équipe de notification.\"\r\n        }\r\n    },\r\n    \"tags\": [\r\n        \"test1\",\r\n        \"test2\"\r\n    ]\r\n}\r\n"
         },
         "description": "RU-ADDRESSIDS-0060 : Lorsqu'une adresse vide est passée sur l'appel unitaire, une erreur doit être remontée, aucun traitement ne doit être réalisé"
-      },
-      "response": []
-    },
-    {
-      "_postman_id": "8886eaec-2184-673d-4be2-be17b16bbc86",
-      "name": "Appel Unitaire round address_rowX OK",
-      "event": [
-        {
-          "listen": "test",
-          "script": {
-            "type": "text/javascript",
-            "exec": [
-              "// Les élements ci-dessous permettent de tester le résultat de l'appel postman",
-              "",
-              "// Pour lancer en mode ligne de commande les tests",
-              "// npm install -g newman # il faut avoir au préalable node.js installé",
-              "// Exporter les tests sous APIQualifAdresse.postman_collection.json",
-              "// Un fichier d'environnement contennt la valeur de {{APIQADR}} doit être chargé (local, dev, rec, int, pprd, prod)",
-              "// Lancer les tests en ligne de commande (pour l'envronnement local)",
-              "// cd api/tests/Postman",
-              "// newman run --color -n1 -g local.postman_environment.json APIQualifAdresse.postman_collection.json",
-              "",
-              "var expected = {};",
-              "// Elements à vérifier : a adapter en fonction du service appelé",
-              "",
-              "expected.http_status_code = 200;",
-              "expected.content_type = \"application/json\";",
-              "expected.response_time_ms = 10000;",
-              "// expected.bodyContainsText = \"test\"",
-              "expected.body = {",
-              "  \"round\": {",
-              "    \"id\": \"77177\",",
-              "    \"rank\": \"25\",",
-              "    \"type\": \"TL\",",
-              "    \"label\": \"5302\"",
-              "  }",
-              "};",
-              "",
-              "",
-              "// Launch Tests",
-              "var globalTest = eval('('+environment.globalTest+')');",
-              "globalTest(expected);"
-            ]
-          }
-        }
-      ],
-      "request": {
-        "url": "http://{{APIQADR}}/address/v1/analyse?address_row4=61 rue de caulaincourt&address_row6=75018 paris&params=round",
-        "method": "GET",
-        "header": [],
-        "body": {
-          "mode": "raw",
-          "raw": "{\r\n    \"partner\":\"SONDE\",\r\n    \"model\":\"GENERIC_SMS\",\r\n    \"datas\": {\r\n        \"sms\": {\r\n            \"gsm\": \"{{NUMERO_TEL}}\",\r\n            \"content\": \"Ceci est un SMS de l'équipe de notification.\"\r\n        }\r\n    },\r\n    \"tags\": [\r\n        \"test1\",\r\n        \"test2\"\r\n    ]\r\n}\r\n"
-        },
-        "description": "RU-ROUND-0011  : Lorsque je soumet au service unitaire une adresse valide (au format address_rowX)et associée à une tournée, les données de tournées DOIVENT être renvoyées"
       },
       "response": []
     }
