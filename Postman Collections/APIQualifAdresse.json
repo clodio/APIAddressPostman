@@ -254,7 +254,7 @@
         }
       ],
       "request": {
-        "url": "http://{{APIQADR}}/address/v1/single_analysis?address_row1=Mr toto valide &address_row4= 61 rue de caulaincourt &address_row6=75018 pari ",
+        "url": "http://{{APIQADR}}/address/v1/analyse?address_row1=Mr toto valide &address_row4= 61 rue de caulaincourt &address_row6=75018 pari ",
         "method": "GET",
         "header": [],
         "body": {
@@ -302,7 +302,7 @@
         }
       ],
       "request": {
-        "url": "http://{{APIQADR}}/address/v1/single_analysis?address_row4=61 rue de caulaincourt&address_row6=75018 paris&params=distribution_site",
+        "url": "http://{{APIQADR}}/address/v1/analyse?address_row4=61 rue de caulaincourt&address_row6=75018 paris&params=distribution_site",
         "method": "GET",
         "header": [],
         "body": {
@@ -888,7 +888,7 @@
         }
       ],
       "request": {
-        "url": "http://{{APIQADR}}/address/v1/single_analysis?address_row1=Mr toto valide &address_row4= 61 rue de caulaincourt &address_row6=75018 paris&params=deliverable",
+        "url": "http://{{APIQADR}}/address/v1/analyse?address_row1=Mr toto valide &address_row4= 61 rue de caulaincourt &address_row6=75018 paris&params=deliverable",
         "method": "GET",
         "header": [],
         "body": {
