@@ -1471,7 +1471,7 @@
         }
       ],
       "request": {
-        "url": "http://{{APIQADR}}/address/v1/single_analysis?address=61 rue de caulaincourt%0A75018 paris&params=deliverable",
+        "url": "http://{{APIQADR}}/address/v1/analyse?address=61 rue de caulaincourt%0A75018 paris&params",
         "method": "GET",
         "header": [],
         "body": {
