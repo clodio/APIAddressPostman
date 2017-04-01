@@ -206,7 +206,7 @@
         }
       ],
       "request": {
-        "url": "http://{{APIQADR}}/address/v1/analyse?address_row4=61 rue de caulaincourt&address_row6=75018 paris&params",
+        "url": "http://{{APIQADR}}/address/v1/single_analysis?address_row4=18 rue caulaincourt&address_row6=75018 paris&params=deliverable",
         "method": "GET",
         "header": [],
         "body": {
@@ -1471,7 +1471,7 @@
         }
       ],
       "request": {
-        "url": "http://{{APIQADR}}/address/v1/analyse?address=61 rue de caulaincourt%0A75018 paris&params",
+        "url": "http://{{APIQADR}}/address/v1/single_analysis?address=61 rue de caulaincourt%0A75018 paris&params=deliverable",
         "method": "GET",
         "header": [],
         "body": {
